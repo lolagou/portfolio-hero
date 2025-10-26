@@ -1,38 +1,209 @@
-.App {
-  text-align: center;
+/* ====== HERO PORTFOLIO (sin Tailwind) ====== */
+:root{
+  --ph-bg: #7577ED;           /* color pedido */
+  --ph-white: #E3E0FB;
+  --ph-white-90: rgba(255,255,255,.92);
+  --ph-pill: rgba(255,255,255,.18);
+  --ph-pill-br: rgba(255,255,255,.35);
+  --ph-active: #ffffff;
+  --ph-activeText: #250B81;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.ph-root{
   min-height: 100vh;
+  background: var(--ph-bg);
+  color: var(--ph-white);
+  position: relative;
+  overflow: hidden;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+/* ---------- NAV SUPERIOR CENTRADA ---------- */
+.ph-top{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 24px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centra el nav */
+}
+.ph-pillbar{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  background: rgba(255,255,255,.10);
+  padding:8px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+.ph-pill{
+  border: var(--ph-pill);
+  background: var(--ph-pill);
+  color: var(--ph-white-90);
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:14px;
+}
+.ph-pill.is-active{
+  background: var(--ph-active);
+  color: var(--ph-activeText);
+  font-weight:600;
+}
+
+/* icono hamburgesa a la derecha (decorativo) */
+.ph-burger{
+  position:absolute;
+  right:24px;
+  top:16px;
+  width:32px; height:26px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.ph-burger span{
+  height:2px; background:#fff; width:100%;
+}
+
+/* ---------- HERO GRID ---------- */
+.ph-hero{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px 120px;
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  align-items: center;
+}
+.ph-title{
+  font-size: clamp(32px, 6vw, 64px);
+  line-height:1.1;
+  letter-spacing:.5px;
+  font-weight:600;
+}
+.ph-sub{
+  margin-top: 12px;
+  font-size: clamp(16px, 2.5vw, 26px);
+  color: var(--ph-white-90);
+}
+.ph-right {
+  justify-self: end;  /* esto lo empuja a la derecha */
+}
+.ph-heart{
+  width: clamp(200px, 30vw, 340px);
+  filter: drop-shadow(0 30px 70px rgba(0,0,0,.35));
+  user-select:none;
+}
+
+/* ---------- CARRUSEL DOBLE INFERIOR ---------- */
+.ph-carousel {
+  position: absolute;
+  left: 0; right: 0; bottom: 40px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.ph-track {
+  display: flex;
+  width: max-content;
+}
+.ph-track.top {
+  animation: marquee-right 20s linear infinite;
+}
+.ph-track.bottom {
+  animation: marquee-left 20s linear infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ph-row {
+  display: flex;
+  gap: min(7vw, 56px);
+  padding-right: min(10vw, 120px);
+}
+.ph-row span {
+  font-weight: 600;
+  font-size: clamp(22px, 3vw, 36px);
+  color: var(--ph-white);
+  opacity: .4;
+}
+.ph-row .ph-dim {
+  opacity: .4;
+  font-size: clamp(22px, 3vw, 36px);
+}
+
+/* Animaciones en direcciones opuestas */
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0%); }
+}
+@keyframes marquee-left {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-50%); }
+}
+
+/* Pausa suave al hover */
+.ph-carousel:hover .ph-track {
+  animation-play-state: paused;
+}
+
+
+
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px){
+  .ph-hero { grid-template-columns:1fr; padding-bottom: 160px; }
+  .ph-right { justify-self:center; }
+  .ph-heart { width: clamp(200px, 40vw, 280px); }
+}
+
+
+
+/* ===== Sección Fortalezas (misma paleta del fondo #7577ED) ===== */
+.s-root{
+  background: #7577ED;               /* mismo fondo para continuidad */
+  padding: 56px 24px 96px;           /* aire arriba y abajo */
+  color: #0f0b52;                    /* texto principal (oscuro azulado) */
+}
+.s-grid{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px 80px;                    /* vertical / horizontal */
+}
+.s-card{
+  background: transparent;           /* sin tarjeta, como tu diseño */
+}
+.s-num{
+  font-weight: 700;
+  font-size: clamp(18px, 2.2vw, 24px);
+  color: #ffffff;                    /* número claro */
+  margin-bottom: 10px;
+  letter-spacing: .5px;
+}
+.s-title{
+  font-weight: 800;
+  font-size: clamp(22px, 2.8vw, 34px);
+  line-height: 1.2;
+  color: #1a1466;                    /* título más fuerte */
+  margin: 0 0 14px;
+}
+.s-title .s-line{ display: inline; }
+.s-text{
+  color: rgba(255,255,255,.92);      /* párrafo claro como en la captura */
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.6;
+  margin: 0 0 18px;
+  max-width: 56ch;
+}
+.s-hr{
+  width: clamp(160px, 32%, 260px);
+  height: 4px;
+  background: #ffffff;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* Responsive: 1 columna */
+@media (max-width: 900px){
+  .s-grid{ grid-template-columns: 1fr; gap: 40px; }
 }
