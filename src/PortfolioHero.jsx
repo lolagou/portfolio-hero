@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import "./App.css";
 import corazon from "./corazon.png";
+import me from "./me.png";
+import proyecto from "./proyecto.png";
 
 export default function PortfolioHero() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -97,7 +99,7 @@ function AboutMeSection() {
   return (
     <section className="about-root" id="sobre-mi">
       <div className="about-card">
-        <img className="about-photo" src="/me.png" alt="Lola Emma Nuñez Gouget" />
+      <img className="about-photo" src={me} alt="Lola Emma Nuñez Gouget" />
 
         <div className="about-copy">
           <h2 className="about-title">¿Quién soy?</h2>
@@ -265,7 +267,7 @@ function FormationSection() {
 // ====== Proyectos Destacados ======
 function FeaturedProjectsSection() {
 
-  const imgSrc = "/proyecto.png"; 
+  <img className="feat-img" src={proyecto} alt="Bioimpresora 3D" />
 
   return (
     <section className="feat-root" id="proyectos">
