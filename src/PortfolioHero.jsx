@@ -30,16 +30,6 @@ export default function PortfolioHero() {
           ))}
         </nav>
 
-        {/* BOTÓN BURGER */}
-        <button
-          className="ph-burger"
-          aria-label="Abrir menú"
-          onClick={() => setMenuOpen(true)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
       </header>
 
       {/* HERO */}
@@ -74,7 +64,7 @@ export default function PortfolioHero() {
       <FooterSection />
 
       {/* 👇 MENÚ DESPLEGABLE */}
-      <NavOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
+
     </div>
   );
 }
@@ -348,37 +338,3 @@ function FooterSection() {
   );
 }
 
-function NavOverlay({ open, onClose }) {
-  const goTo = (id) => () => {
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    onClose();
-  };
-
-  return (
-    <div className={`nav-ovl ${open ? "is-open" : ""}`} aria-hidden={!open}>
-      <div className="nav-panel">
-        <button className="nav-close" aria-label="Cerrar menú" onClick={onClose}>
-          ✕
-        </button>
-
-        <nav className="nav-list">
-          <button className="nav-item is-active" onClick={goTo("#sobre-mi")}>
-            Sobre mi
-            <span className="nav-underline" aria-hidden />
-          </button>
-          <button className="nav-item" onClick={goTo("#habilidades")}>
-            Habilidades
-          </button>
-          <button className="nav-item" onClick={goTo("#educacion")}>
-            Educación
-          </button>
-
-          <a className="ft-btn nav-cta" href="mailto:lolaemma2007@gmail.com">
-            Trabaja conmigo
-          </a>
-        </nav>
-      </div>
-    </div>
-  );
-}
