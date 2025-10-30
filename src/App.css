@@ -1,12 +1,13 @@
 /* ====== HERO PORTFOLIO (sin Tailwind) ====== */
 :root{
-  --ph-bg: #7577ED;           /* color pedido */
-  --ph-white: #E3E0FB;
+  --ph-bg: #64DBB2;           /* color pedido */
+  --ph-white: #E0F8F0;
   --ph-white-90: rgba(255,255,255,.92);
   --ph-pill: rgba(255,255,255,.18);
   --ph-pill-br: rgba(255,255,255,.35);
   --ph-active: #ffffff;
-  --ph-activeText: #250B81;
+  --ph-activeText: #0B8158;
+  --ph-carousel-bottom: 220px;
 }
 
 .ph-root{
@@ -88,20 +89,22 @@
   justify-self: end;  /* esto lo empuja a la derecha */
 }
 .ph-heart{
-  width: clamp(200px, 30vw, 340px);
+  width: clamp(150px, 25vw, 190px);
   filter: drop-shadow(0 30px 70px rgba(0,0,0,.35));
   user-select:none;
 }
 
 /* ---------- CARRUSEL DOBLE INFERIOR ---------- */
 .ph-carousel {
-  position: absolute;
-  left: 0; right: 0; bottom: 40px;
+  position: relative;        /* antes: absolute */
+  margin-top: 120px;         /* bajalo todo lo que quieras */
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
+  z-index: 1;
 }
+
 
 .ph-track {
   display: flex;
@@ -159,9 +162,9 @@
 
 /* ===== Sección Fortalezas (misma paleta del fondo #7577ED) ===== */
 .s-root{
-  background: #7577ED;               /* mismo fondo para continuidad */
+  background: #64DBB2;               /* mismo fondo para continuidad */
   padding: 56px 24px 96px;           /* aire arriba y abajo */
-  color: #0f0b52;                    /* texto principal (oscuro azulado) */
+  color: #0B8158;                    /* texto principal (oscuro azulado) */
 }
 .s-grid{
   max-width: 1200px;
@@ -184,7 +187,7 @@
   font-weight: 800;
   font-size: clamp(22px, 2.8vw, 34px);
   line-height: 1.2;
-  color: #1a1466;                    /* título más fuerte */
+  color: #0B8158;                    /* título más fuerte */
   margin: 0 0 14px;
 }
 .s-title .s-line{ display: inline; }
@@ -206,4 +209,183 @@
 /* Responsive: 1 columna */
 @media (max-width: 900px){
   .s-grid{ grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ====== ¿Quién soy? ====== */
+.about-root{
+  background: var(--ph-bg);           /* mismo verde */
+  padding: 60px 24px 90px;
+  color: #ffffff;
+}
+
+.about-card{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr; /* foto / texto */
+  gap: 40px;
+  align-items: center;
+}
+
+.about-photo{
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;               /* parecida a tu recorte */
+  object-fit: cover;
+  border-radius: 24px;               /* esquinas redondeadas */
+  box-shadow: 0 30px 70px rgba(0,0,0,.25);
+  justify-self: center;
+}
+
+.about-copy{
+  text-align: left;
+}
+
+.about-title{
+  font-size: clamp(26px, 3.6vw, 36px);
+  font-weight: 800;
+  margin: 0 0 14px;
+  color: #ffffff;
+}
+
+.about-text{
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.6;
+  color: rgba(255,255,255,.95);
+  margin: 0 0 26px;
+  max-width: 48ch;
+}
+
+.about-contacts{
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.contact-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  text-decoration: none;
+  transition: transform .15s ease;
+  backdrop-filter: blur(6px);
+}
+.contact-item:hover{ transform: translateY(-2px); }
+
+.contact-text{ letter-spacing: .2px; }
+.contact-ico{
+  font-weight: 700;
+  width: 28px; height: 28px;
+  display: inline-grid; place-items: center;
+  background: #ffffff;
+  color: var(--ph-activeText);       /* el mismo verde oscuro del set */
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+/* responsive stack */
+@media (max-width: 900px){
+  .about-card{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-copy{ text-align: center; }
+  .about-text{ margin-left: auto; margin-right: auto; }
+}
+
+
+/* ====== FORMACION (idéntico a la captura) ====== */
+.form-root{
+  background: var(--ph-bg);             /* mismo verde del sitio */
+  padding: 56px 24px 80px;
+  color: #ffffff;
+}
+.form-title{
+  max-width: 1200px;
+  margin: 0 auto 26px;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: clamp(20px, 2.4vw, 28px);
+}
+
+.form-wrap{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 80px 1fr;      /* columna del riel + tarjetas */
+  gap: 16px;
+  align-items: start;
+  position: relative;
+}
+
+/* Riel vertical */
+.form-rail{
+  position: relative;
+  height: 100%;
+  min-height: 520px;                    /* alto cómodo para 3 tarjetas */
+  display: flex;
+  align-items: stretch;
+}
+.form-rail-line{
+  width: 8px;
+  background: #1f7e5d;                  /* verde más oscuro */
+  margin-left: 28px;                     /* separa del borde */
+  border-radius: 8px;
+}
+.form-dot{
+  position: absolute;
+  left: 19px;                            /* centrado sobre la línea */
+  top: 0;
+  width: 16px; height: 16px;
+  background: #64DBB2;                   /* mismo fondo, como en la captura */
+  border: 6px solid #1f7e5d;             /* anillo oscuro */
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  transform: translateY(0);              /* se actualiza por JS */
+  transition: transform .45s cubic-bezier(.22,.75,.2,1);
+}
+
+/* Contenedor de tarjetas */
+.form-list{
+  display: grid;
+  gap: 28px;
+}
+
+/* Tarjeta */
+.form-card{
+  background: #2b8a6a;                   /* verde tarjeta */
+  color: rgba(255,255,255,.95);
+  border-radius: 22px;
+  padding: 22px 26px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  outline: none;
+  cursor: pointer;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.form-card:hover{ transform: translateY(-2px); }
+.form-card.is-active{ box-shadow: 0 22px 50px rgba(0,0,0,.22); }
+
+.form-h{
+  margin: 0 0 8px;
+  font-weight: 800;
+  font-size: clamp(18px, 2.2vw, 24px);
+  letter-spacing: .4px;
+  color: #d9fff2;                        /* título claro */
+}
+.form-p{
+  margin: 0;
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .form-wrap{ grid-template-columns: 48px 1fr; }
+  .form-rail-line{ margin-left: 18px; }
+  .form-dot{ left: 14px; }
 }
