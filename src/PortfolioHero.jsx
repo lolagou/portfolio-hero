@@ -48,9 +48,9 @@ export default function PortfolioHero() {
           <h1 className="ph-title">Lola Emma Nuñez Gouget</h1>
           <p className="ph-sub">Estudiante bioingeniería</p>
 
-          <div className="ph-right">
-            <img className="ph-heart" src={corazon} alt="Corazón" />
-          </div>
+
+          <img className="ph-heart" src={corazon} alt="Corazón" />
+
 
           {/* CARRUSEL DOBLE */}
           <div className="ph-carousel" aria-label="Cualidades">
