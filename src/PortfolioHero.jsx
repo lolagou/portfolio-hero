@@ -6,11 +6,10 @@ import React, {
   useCallback,
 } from "react";
 import "./App.css";
-import corazon from "./corazon.png"; // asegurate de que exista
+import corazon from "./corazon.png";
 
-// ====== Componente principal ======
 export default function PortfolioHero() {
-  const [menuOpen, setMenuOpen] = useState(false); // 👈 estado del menú
+  const [menuOpen, setMenuOpen] = useState(false);
   const pills = ["Sobre mi", "Habilidades", "Educacion", "Contactarme"];
 
   return (
@@ -265,8 +264,8 @@ function FormationSection() {
 
 // ====== Proyectos Destacados ======
 function FeaturedProjectsSection() {
-  // si preferís import: import bio3d from "./assets/bio3d.jpg";
-  const imgSrc = "/proyecto.png"; // poné tu ruta real (ej: /bio3d.jpg en public)
+
+  const imgSrc = "/proyecto.png"; 
 
   return (
     <section className="feat-root" id="proyectos">
