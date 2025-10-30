@@ -10,6 +10,7 @@ import corazon from "./corazon.png"; // asegurate de que exista
 
 // ====== Componente principal ======
 export default function PortfolioHero() {
+  const [menuOpen, setMenuOpen] = useState(false); // 👈 estado del menú
   const pills = ["Sobre mi", "Habilidades", "Educacion", "Contactarme"];
 
   return (
@@ -27,14 +28,20 @@ export default function PortfolioHero() {
             </button>
           ))}
         </nav>
-        <div className="ph-burger" aria-hidden>
+
+        {/* BOTÓN BURGER */}
+        <button
+          className="ph-burger"
+          aria-label="Abrir menú"
+          onClick={() => setMenuOpen(true)}
+        >
           <span />
           <span />
           <span />
-        </div>
+        </button>
       </header>
 
-      {/* HERO (va arriba de todo) */}
+      {/* HERO */}
       <main className="ph-hero">
         <div className="ph-left">
           <h1 className="ph-title">Lola Emma Nuñez Gouget</h1>
@@ -58,13 +65,19 @@ export default function PortfolioHero() {
         </div>
       </main>
 
-      {/* SECCIONES ORDENADAS */}
+      {/* SECCIONES */}
       <AboutMeSection />
       <StrengthsSection />
       <FormationSection />
+      <FeaturedProjectsSection />
+      <FooterSection />
+
+      {/* 👇 MENÚ DESPLEGABLE */}
+      <NavOverlay open={menuOpen} onClose={() => setMenuOpen(false)} />
     </div>
   );
 }
+
 
 // ====== Fila del carrusel ======
 function Row() {
@@ -245,5 +258,126 @@ function FormationSection() {
         </div>
       </div>
     </section>
+  );
+
+  
+}
+
+// ====== Proyectos Destacados ======
+function FeaturedProjectsSection() {
+  // si preferís import: import bio3d from "./assets/bio3d.jpg";
+  const imgSrc = "/proyecto.png"; // poné tu ruta real (ej: /bio3d.jpg en public)
+
+  return (
+    <section className="feat-root" id="proyectos">
+      <div className="feat-grid">
+        <div className="feat-copy">
+          <h2 className="feat-title">PROYECTOS DESTACADOS</h2>
+          <div className="feat-year">2025</div>
+          <p className="feat-text">
+            En este proyecto académico desarrollé un prototipo de sistema de
+            bioimpresión 3D destinado a la creación de tejidos blandos compatibles
+            con el cuerpo humano. El objetivo fue simular el proceso de generación
+            de un órgano artificial funcional, utilizando biotintas a base de
+            colágeno y células madre cultivadas en laboratorio.
+          </p>
+        </div>
+
+        <div className="feat-media">
+          <img className="feat-img" src={imgSrc} alt="Bioimpresora 3D" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ====== Footer ======
+function FooterSection() {
+  return (
+    <footer className="ft-root">
+      <div className="ft-grid">
+
+        {/* Contact */}
+        <div className="ft-col">
+          <h3 className="ft-title">Contact</h3>
+          <p className="ft-note">Buenos Aires, Belgrano</p>
+          <p className="ft-note">Horario: de 8am a 18pm</p>
+          <p className="ft-note">1132903329</p>
+        </div>
+
+        {/* Site */}
+        <div className="ft-col">
+          <h3 className="ft-title">Site</h3>
+          <a className="ft-link" href="#home">Home</a>
+          <a className="ft-link" href="#sobre-mi">About</a>
+          <a className="ft-link" href="#capabilities">Capabilities</a>
+          <a className="ft-link" href="#blog">Blog</a>
+        </div>
+
+        {/* Social */}
+        <div className="ft-col">
+          <h3 className="ft-title">Social</h3>
+
+          <a className="ft-link ft-iconrow" href="https://www.linkedin.com/in/lolanun" target="_blank" rel="noreferrer">
+            <span className="ft-ico">in</span> Linkedin
+          </a>
+
+          <a className="ft-link ft-iconrow" href="mailto:lolaemma2007@gmail.com">
+            <span className="ft-ico">✉️</span> Gmail
+          </a>
+
+          <a className="ft-link ft-iconrow" href="https://github.com/" target="_blank" rel="noreferrer">
+            <span className="ft-ico">🐙</span> GitHub
+          </a>
+        </div>
+
+        {/* Newsletter / CTA */}
+        <div className="ft-col">
+          <h3 className="ft-title">Newsletter</h3>
+          <p className="ft-note">
+            Si estás interesado en colaborar conmigo, no dudes en contactarme.
+          </p>
+          <a className="ft-btn" href="mailto:lolaemma2007@gmail.com">
+  <span>Trabaja conmigo</span>
+</a>
+        </div>
+
+      </div>
+    </footer>
+  );
+}
+
+function NavOverlay({ open, onClose }) {
+  const goTo = (id) => () => {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    onClose();
+  };
+
+  return (
+    <div className={`nav-ovl ${open ? "is-open" : ""}`} aria-hidden={!open}>
+      <div className="nav-panel">
+        <button className="nav-close" aria-label="Cerrar menú" onClick={onClose}>
+          ✕
+        </button>
+
+        <nav className="nav-list">
+          <button className="nav-item is-active" onClick={goTo("#sobre-mi")}>
+            Sobre mi
+            <span className="nav-underline" aria-hidden />
+          </button>
+          <button className="nav-item" onClick={goTo("#habilidades")}>
+            Habilidades
+          </button>
+          <button className="nav-item" onClick={goTo("#educacion")}>
+            Educación
+          </button>
+
+          <a className="ft-btn nav-cta" href="mailto:lolaemma2007@gmail.com">
+            Trabaja conmigo
+          </a>
+        </nav>
+      </div>
+    </div>
   );
 }
