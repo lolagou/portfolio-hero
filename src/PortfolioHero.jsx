@@ -285,7 +285,7 @@ function FeaturedProjectsSection() {
         </div>
 
         <div className="feat-media">
-          <img className="feat-img" src={imgSrc} alt="Bioimpresora 3D" />
+          <img className="feat-img" src={proyecto} alt="Bioimpresora 3D" />
         </div>
       </div>
     </section>
