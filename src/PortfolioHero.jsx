@@ -10,27 +10,43 @@ import corazon from "./corazon.png";
 import me from "./me.png";
 import proyecto from "./proyecto.png";
 
-export default function PortfolioHero() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const pills = ["Sobre mi", "Habilidades", "Educacion", "Contactarme"];
 
-  return (
-    <div className="ph-root">
-      {/* NAVBAR CENTRADA */}
-      <header className="ph-top">
-        <nav className="ph-pillbar" aria-label="Secciones">
-          {pills.map((label, i) => (
-            <button
-              key={label}
-              className={`ph-pill ${i === pills.length - 1 ? "is-active" : ""}`}
-              type="button"
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
-
-      </header>
+  export default function PortfolioHero() {
+    const pillConfig = [
+      { label: "Sobre mi", targetId: "sobre-mi" },
+      { label: "Habilidades", targetId: "habilidades" },
+      { label: "Educacion", targetId: "formacion" },
+      { label: "Contactarme", targetId: "contacto" },
+    ];
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [activePill, setActivePill] = useState(0); 
+  
+    const handlePillClick = (index, targetId) => {
+      setActivePill(index);
+  
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+  
+    return (
+      <div className="ph-root">
+        {/* NAVBAR CENTRADA */}
+        <header className="ph-top">
+          <nav className="ph-pillbar" aria-label="Secciones">
+            {pillConfig.map((pill, i) => (
+              <button
+                key={pill.label}
+                type="button"
+                className={`ph-pill ${i === activePill ? "is-active" : ""}`}
+                onClick={() => handlePillClick(i, pill.targetId)}
+              >
+                {pill.label}
+              </button>
+            ))}
+          </nav>
+        </header>
 
       {/* HERO */}
       <main className="ph-hero">
@@ -150,7 +166,7 @@ function StrengthsSection() {
   ];
 
   return (
-    <section className="s-root">
+    <section className="s-root" id="habilidades">
       <div className="s-grid">
         {items.map((it) => (
           <article key={it.n} className="s-card">
@@ -223,7 +239,7 @@ function FormationSection() {
   }, [repositionDot]);
 
   return (
-    <section className="form-root">
+    <section className="form-root" id="formacion">
       <h2 className="form-title">FORMACIÓN</h2>
       <div className="form-wrap">
         <div className="form-rail" ref={railRef}>
@@ -285,7 +301,7 @@ function FeaturedProjectsSection() {
 // ====== Footer ======
 function FooterSection() {
   return (
-    <footer className="ft-root">
+    <footer className="ft-root" id="contacto">
       <div className="ft-grid">
 
         {/* Contact */}
