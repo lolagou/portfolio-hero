@@ -8,7 +8,7 @@ import React, {
 import "./App.css";
 import corazon from "./corazon.png";
 import me from "./me.png";
-import proyecto from "./proyecto.png";
+import proyecto from "./trevian.png";
 
 
   export default function PortfolioHero() {
@@ -282,11 +282,7 @@ function FeaturedProjectsSection() {
           <h2 className="feat-title">PROYECTOS DESTACADOS</h2>
           <div className="feat-year">2025</div>
           <p className="feat-text">
-            En este proyecto académico desarrollé un prototipo de sistema de
-            bioimpresión 3D destinado a la creación de tejidos blandos compatibles
-            con el cuerpo humano. El objetivo fue simular el proceso de generación
-            de un órgano artificial funcional, utilizando biotintas a base de
-            colágeno y células madre cultivadas en laboratorio.
+          Trevian es una aplicación mobile que permite al usuario obtener una plantilla ortopédica personalizada, creada a partir de un escaneo realizado con la cámara LiDAR. Las imágenes obtenidas son luego analizadas por una inteligencia artificial y transformadas en un modelo 3D para su impresión. 
           </p>
         </div>
 
