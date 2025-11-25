@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Quicksand:wght@300..700&display=swap');
 
 :root{
   --ph-bg: #64DBB2;          
@@ -16,7 +17,7 @@
   color: var(--ph-white);
   position: relative;
   overflow: hidden;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  font-family: 'Quicksand', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
 /* ---------- NAV ---------- */
@@ -101,7 +102,7 @@
 .ph-carousel {
   position: relative;
   width: 100vw;                
-  left: 50%;                 
+  left: 35%;                 
   transform: translateX(-50%);
   margin-top: 360px;
   overflow: hidden;

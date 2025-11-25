@@ -11,6 +11,7 @@ import me from "./me.png";
 import proyecto from "./trevian.png";
 
 
+
   export default function PortfolioHero() {
     const pillConfig = [
       { label: "Sobre mi", targetId: "sobre-mi" },
